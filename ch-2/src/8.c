@@ -13,6 +13,8 @@
 
 #include <stdio.h>
 
+#define MONTHS_IN_YEAR 12
+
 int main(void)
 {
 	float loan, interest_rate, monthly_payment;
@@ -28,13 +30,15 @@ int main(void)
 	// interest_rate = 6.0f;
 	// monthly_payment = 386.66f;
 
-	loan = (loan - monthly_payment) + (loan * (0.06 / 12));
+	float percentage = interest_rate / 100;
+
+	loan = (loan - monthly_payment) + (loan * (percentage / MONTHS_IN_YEAR));
 	printf("\nBalance remaining after first payment: %.2f\n", loan);
 
-	loan = (loan - monthly_payment) + (loan * (0.06 / 12));
+	loan = (loan - monthly_payment) + (loan * (percentage / MONTHS_IN_YEAR));
 	printf("Balance remaining after second payment: %.2f\n", loan);
 
-	loan = (loan - monthly_payment) + (loan * (0.06 / 12));
+	loan = (loan - monthly_payment) + (loan * (percentage / MONTHS_IN_YEAR));
 	printf("Balance remaining after third payment: %.2f\n", loan);
 
 	return 0;
