@@ -13,17 +13,16 @@ int main(void)
 	printf("Expression\n");
 	printf("3x⁵ + 2x⁴ – 5x³ – x² + 7x – 6\n");
 
-	float value;
+	float x;
 
 	printf("\nEnter a value: ");
-	scanf("%f", &value);
+	scanf("%f", &x);
 
 	printf("\nSolution\n");
 	printf("= (((((3)(%.2f) + 2)%.2f – 5)%.2f – 1)%.2f + 7)%.2f – 6\n",
-	       value, value, value, value, value);
+	       x, x, x, x, x);
 
-	float answer =
-		((((3 * value + 2) * value - 5) * value - 1) * value + 7) * value - 6;
+	float answer = ((((3 * x + 2) * x - 5) * x - 1) * x + 7) * x - 6;
 
 	printf("= %.2f\n", answer);
 
