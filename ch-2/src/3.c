@@ -3,13 +3,14 @@
 
 #include <stdio.h>
 
+#define VOLUME_FACTOR (4.0f / 3.0f)
 #define PI 3.141592f
 
 int main(void)
 {
 	// V = 4/3πr³
 	
-	float radius, volume;
+	float radius;
 
 	printf("Sphere\n");
 	printf("Solve for volume\n");
@@ -21,7 +22,7 @@ int main(void)
 	printf("V = 4/3πr³\n");
 	printf("V = 4/3 * π * %.2f³\n", radius);
 
-	volume = 4.0f / 3.0f * PI * radius * radius * radius;
+	float volume = VOLUME_FACTOR * PI * radius * radius * radius;
 
 	printf("V ≈ %.2f\n", volume);
 
