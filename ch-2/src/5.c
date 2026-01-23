@@ -8,27 +8,22 @@
 
 #include <stdio.h>
 
-float second(float x) { return x * x; }
-float third(float x)  { return x * x * x; }
-float fourth(float x) { return x * x * x * x; }
-float fifth(float x)  { return x * x * x * x * x; }
-
 int main(void)
 {
 	printf("Expression\n");
 	printf("3x⁵ + 2x⁴ – 5x³ – x² + 7x – 6\n");
 
-	float value;
+	float x;
 
 	printf("\nEnter a value: ");
-	scanf("%f", &value);
+	scanf("%f", &x);
 
 	printf("\nSolution\n");
 	printf("= 3(%.2f⁵) + 2(%.2f⁴) − 5(%.2f³) − %.2f² + (7)(%.2f) − 6\n",
-	       value, value, value, value, value);
+	       x, x, x, x, x);
 
-	float answer = (3 * fifth(value)) + (2 * fourth(value)) -
-	               (5 * third(value)) - second(value) + (7 * value) - 6;
+	float answer = (3 * (x * x * x * x * x)) + (2 * (x * x * x * x)) -
+	               (5 * (x * x * x)) - (x * x) + (7 * x) - 6;
 
 	printf("= %.2f\n", answer);
 
