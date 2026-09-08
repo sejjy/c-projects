@@ -8,35 +8,57 @@
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Date:   September 08, 2026
 
-print_help() {
-	local script=${0##*/}
+SCRIPT=${0##*/}
 
-	cat <<-EOF
-		$script: $script <chapter> <project>
-		    Compile and run a project
-	EOF
+fatal() {
+	printf "%s: %s\n" "$SCRIPT" "$@" >&2
+	exit 1
 }
 
 main() {
 	local c=$1
 	local p=$2
 
-	if [[ -z $p ]]; then
-		print_help >&2
-		return 1
+	if [[ -z $c || -z $p ]]; then
+		fatal "<chapter> <project>"
+	fi
+
+	if ((c < 2 || c > 27)); then
+		fatal "chapter must be 02 to 27"
+	fi
+
+	if ((p < 1 || p > 19)); then
+		fatal "project must be 01 to 19"
 	fi
 
 	printf -v c "%02d" "$c"
 	printf -v p "%02d" "$p"
 
-	local bin="./chap_$c/bin"
+	local bin proj
+
+	case $PWD in
+		*/chap_*/bin)
+			bin="."
+			proj="../$p.c"
+			;;
+		*/chap_*)
+			bin="./bin"
+			proj="./$p.c"
+			;;
+		*/c-projects)
+			bin="./chap_$c/bin"
+			proj="./chap_$c/$p.c"
+			;;
+		*)
+			fatal "must be run from the c-projects root directory"
+			;;
+	esac
 
 	if [[ ! -d $bin ]]; then
 		mkdir -p "$bin"
 	fi
 
-	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$bin/$p" "./chap_$c/$p.c" &&
-		"$bin/$p"
+	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$bin/$p" "$proj" && "$bin/$p"
 }
 
 main "$@"
