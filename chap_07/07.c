@@ -45,7 +45,7 @@ int main(void)
 			printf("quotient");
 			break;
 		default:
-			printf("input is invalid\n");
+			printf("operator is invalid\n");
 			return 1;
 	}
 
