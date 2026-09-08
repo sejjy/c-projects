@@ -8,20 +8,20 @@
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Date:   September 08, 2026
 
-SCRIPT=${0##*/}
-
 fatal() {
-	printf "%s: %s\n" "$SCRIPT" "$@" >&2
+	local script=${0##*/}
+
+	echo "$script: $*" >&2
 	exit 1
 }
 
 main() {
-	local c=$1
-	local p=$2
-
-	if [[ -z $c || -z $p ]]; then
+	if (($# != 2)); then
 		fatal "<chapter> <project>"
 	fi
+
+	local c=$((10#$1))
+	local p=$((10#$2))
 
 	if ((c < 2 || c > 27)); then
 		fatal "chapter must be 02 to 27"
@@ -37,11 +37,11 @@ main() {
 	local bin proj
 
 	case $PWD in
-		*/chap_*/bin)
+		*/c-projects/chap_*/bin)
 			bin="."
 			proj="../$p.c"
 			;;
-		*/chap_*)
+		*/c-projects/chap_*)
 			bin="./bin"
 			proj="./$p.c"
 			;;
