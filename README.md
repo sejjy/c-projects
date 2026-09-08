@@ -27,5 +27,5 @@ Makefiles are introduced in Chapter 15.4, which I haven't reached yet. Use the
 easily:
 
 ```bash
-> ./car chapter project
+./car chapter project
 ```
