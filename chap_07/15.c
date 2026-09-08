@@ -26,13 +26,13 @@ int main(void)
 	printf("Enter a positive integer: ");
 	scanf("%d", &n);
 
-	long double factorial = 1;
+	long double factorial = 1.0L;
 
 	for (int i = n; i > 1; i--) {
 		factorial *= i;
 	}
 
-	printf("Factorial of %d: %Lf\n", n, factorial);
+	printf("Factorial of %d: %.0Lf\n", n, factorial);
 
 	return 0;
 }
