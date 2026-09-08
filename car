@@ -37,17 +37,17 @@ main() {
 	local bin proj
 
 	case $PWD in
-		*/c-projects/chap_*/bin)
+		*/c-projects/*/bin)
 			bin="."
 			proj="../$p.c"
 			;;
-		*/c-projects/chap_*)
+		*/c-projects/*)
 			bin="./bin"
 			proj="./$p.c"
 			;;
 		*/c-projects)
-			bin="./chap_$c/bin"
-			proj="./chap_$c/$p.c"
+			bin="./$c/bin"
+			proj="./$c/$p.c"
 			;;
 		*)
 			fatal "must be run from the c-projects root directory"
