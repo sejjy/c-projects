@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# Compile and run a project
+#
+# Dependencies:
+#   - gcc
+#
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
+# Date:   September 08, 2026
+
+print_help() {
+	local script=${0##*/}
+
+	cat <<-EOF
+		$script: $script <chapter> <project>
+		    Compile and run a project
+	EOF
+}
+
+main() {
+	local c=$1
+	local p=$2
+
+	if [[ -z $p ]]; then
+		print_help >&2
+		return 1
+	fi
+
+	printf -v c "%02d" "$c"
+	printf -v p "%02d" "$p"
+
+	local bin="./chap_$c/bin"
+
+	if [[ ! -d $bin ]]; then
+		mkdir -p "$bin"
+	fi
+
+	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$bin/$p" "./chap_$c/$p.c" &&
+		"$bin/$p"
+}
+
+main "$@"
