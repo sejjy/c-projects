@@ -7,7 +7,7 @@ edition) by K. N. King
 
 ```
 .
-├── chap_02
+├── 02
 │   ├── 01.c
 │   ├── 02.c
 │   └── ...    # other projects
