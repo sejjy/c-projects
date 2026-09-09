@@ -8,6 +8,8 @@
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Date:   September 08, 2026
 
+DIRNAME="c-projects"
+
 fatal() {
 	local script=${0##*/}
 
@@ -37,20 +39,20 @@ main() {
 	local bin proj
 
 	case $PWD in
-		*/c-projects/*/bin)
+		*/$DIRNAME/*/bin)
 			bin="."
 			proj="../$p.c"
 			;;
-		*/c-projects/*)
+		*/$DIRNAME/*)
 			bin="./bin"
 			proj="./$p.c"
 			;;
-		*/c-projects)
+		*/$DIRNAME)
 			bin="./$c/bin"
 			proj="./$c/$p.c"
 			;;
 		*)
-			fatal "must be run from the c-projects root directory"
+			fatal "must be run from the $DIRNAME directory"
 			;;
 	esac
 
