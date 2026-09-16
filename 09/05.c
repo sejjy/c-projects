@@ -6,7 +6,7 @@
 //
 // After obtaining the number n from the user, main will call
 // create_magic_square, passing it an n × n array that is declared inside main.
-// create_magic_square will fill the array with the numbers 1, 2, …, n2 as
+// create_magic_square will fill the array with the numbers 1, 2, …, n² as
 // described in the original project. main will then call print_magic_square,
 // which will display the array in the format described in the original project.
 // Note: If your compiler doesn’t support variable-length arrays, declare the
