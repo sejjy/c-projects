@@ -35,7 +35,7 @@ main() {
 	printf -v project "%02d" "$project"
 
 	local infile="./$chapter/$project.c"
-	local outfile="./$chapter/$project.out"
+	local outfile="./$chapter/$project"
 
 	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$outfile" "$infile" &&
 		"$outfile"
