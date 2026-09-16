@@ -50,7 +50,6 @@
 // to generate random numbers. See the deal.c program in Section 8.2 for an
 // example of how to call rand and the related srand function.
 
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,8 +62,8 @@ int main(void)
 {
 	srand((unsigned) time(NULL));
 
-	char c;
 	int wins = 0, losses = 0;
+	char c;
 
 	do {
 		if (play_game()) {
@@ -77,12 +76,8 @@ int main(void)
 		}
 
 		printf("\nPlay again? ");
-
-		if ((c = toupper(getchar())) == '\n')
-			break;
-		while (getchar() != '\n')
-			;
-	} while (c == 'Y');
+		scanf(" %c", &c);
+	} while (c == 'Y' || c == 'y');
 
 	printf("\nWins: %d Losses: %d\n", wins, losses);
 
