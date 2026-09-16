@@ -36,31 +36,15 @@ main() {
 	printf -v c "%02d" "$c"
 	printf -v p "%02d" "$p"
 
-	local bin proj
-
 	case $PWD in
-		*/$DIRNAME/*/bin)
-			bin="."
-			proj="../$p.c"
-			;;
-		*/$DIRNAME/*)
-			bin="./bin"
-			proj="./$p.c"
-			;;
-		*/$DIRNAME)
-			bin="./$c/bin"
-			proj="./$c/$p.c"
-			;;
-		*)
-			fatal "must be run from the $DIRNAME directory"
-			;;
+		*/$DIRNAME/*) file="./$p" ;;
+		*/$DIRNAME)   file="./$c/$p" ;;
+		*)            fatal "must be run from the $DIRNAME directory" ;;
 	esac
 
-	if [[ ! -d $bin ]]; then
-		mkdir -p "$bin"
-	fi
+	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$file" "$file.c" && "$file"
 
-	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$bin/$p" "$proj" && "$bin/$p"
+	rm -f "$file"
 }
 
 main "$@"
