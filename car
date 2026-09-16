@@ -8,8 +8,6 @@
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Date:   September 08, 2026
 
-DIRNAME="c-projects"
-
 fatal() {
 	local script=${0##*/}
 
@@ -22,29 +20,27 @@ main() {
 		fatal "<chapter> <project>"
 	fi
 
-	local c=$((10#$1))
-	local p=$((10#$2))
+	local chapter=$((10#$1))
+	local project=$((10#$2))
 
-	if ((c < 2 || c > 27)); then
-		fatal "chapter must be 02 to 27"
+	if ((chapter < 2 || chapter > 27)); then
+		fatal "chapter must be 2 to 27"
 	fi
 
-	if ((p < 1 || p > 19)); then
-		fatal "project must be 01 to 19"
+	if ((project < 1 || project > 19)); then
+		fatal "project must be 1 to 19"
 	fi
 
-	printf -v c "%02d" "$c"
-	printf -v p "%02d" "$p"
+	printf -v chapter "%02d" "$chapter"
+	printf -v project "%02d" "$project"
 
-	case $PWD in
-		*/$DIRNAME/*) file="./$p" ;;
-		*/$DIRNAME)   file="./$c/$p" ;;
-		*)            fatal "must be run from the $DIRNAME directory" ;;
-	esac
+	local infile="./$chapter/$project.c"
+	local outfile="./$chapter/$project.out"
 
-	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$file" "$file.c" && "$file"
+	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$outfile" "$infile" &&
+		"$outfile"
 
-	rm -f "$file"
+	rm -f "$outfile"
 }
 
 main "$@"
