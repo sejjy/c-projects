@@ -37,10 +37,14 @@ main() {
 	local infile="./$chapter/$project.c"
 	local outfile="./$chapter/$project"
 
-	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$outfile" "$infile" &&
-		"$outfile"
+	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$outfile" "$infile"
+
+	$outfile
+	local code=$?
 
 	rm -f "$outfile"
+
+	return $code
 }
 
 main "$@"
