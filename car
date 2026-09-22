@@ -37,14 +37,12 @@ main() {
 	local infile="./$chapter/$project.c"
 	local outfile="./$chapter/$project"
 
+	# shellcheck disable=SC2064
+	trap "rm -f $outfile" EXIT
+
 	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$outfile" "$infile"
 
 	$outfile
-	local code=$?
-
-	rm -f "$outfile"
-
-	return $code
 }
 
 main "$@"
