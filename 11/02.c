@@ -39,8 +39,8 @@ int main(void)
 	char d_char = (d_hour >= 12) ? 'p' : 'a';
 	char a_char = (a_hour >= 12) ? 'p' : 'a';
 
-	if (d_hour == 0) d_hour  = 12;
-	if (a_hour == 0) a_hour  = 12;
+	if (d_hour == 0) d_hour = 12;
+	if (a_hour == 0) a_hour = 12;
 
 	if (d_hour > 12) d_hour -= 12;
 	if (a_hour > 12) a_hour -= 12;
