@@ -16,12 +16,13 @@ fatal() {
 }
 
 main() {
-	if (($# != 2)); then
-		fatal "<chapter> <project>"
+	if (($# == 0)); then
+		fatal "<chapter> <project> [args...]"
 	fi
 
 	local chapter=$((10#$1))
 	local project=$((10#$2))
+	local args=("${@:3}")
 
 	if ((chapter < 2 || chapter > 27)); then
 		fatal "chapter must be 2 to 27"
@@ -42,7 +43,7 @@ main() {
 
 	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$outfile" "$infile"
 
-	$outfile
+	"$outfile" "${args[@]}"
 }
 
 main "$@"
