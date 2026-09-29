@@ -10,23 +10,33 @@ by K. N. King
 ├── 02
 │   ├── 01.c
 │   ├── 02.c
-│   └── ...    # other projects
+│   └── ...    # other project.c files or project directories
 └── ...    # other chapters
 ```
 
-### Compile and run
+### Build
 
-The book recommends using `gcc` with the following options:
+#### Single-file projects
+
+Use `gcc` with the following options:
 
 ```bash
-gcc -O -Wall -W -pedantic -ansi -std=c99 -o <outfile> <infile> &&
-	<outfile> [args...]
+$ gcc -O -Wall -W -pedantic -ansi -std=c99 -o project project.c
+$ ./project [args...]
 ```
 
-Makefiles are introduced in Chapter 15. For earlier chapters, use the
-[`car`](./car) script to <ins>c</ins>ompile <ins>a</ins>nd <ins>r</ins>un
-projects easily:
+Alternatively, use the [`car`](./car) script to <ins>c</ins>ompile
+<ins>a</ins>nd <ins>r</ins>un single-file projects easily:
 
 ```bash
-./car chapter project
+$ ./car chapter project [args...]
+```
+
+#### Multi-file projects
+
+Use `make` inside the project directory:
+
+```bash
+$ make [target]
+$ ./project [args...]
 ```
