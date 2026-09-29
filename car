@@ -35,15 +35,21 @@ main() {
 	printf -v chapter "%02d" "$chapter"
 	printf -v project "%02d" "$project"
 
-	local infile outfile
-	local cwd=${PWD##*/}
+	local workdir=${PWD##*/}
+	local chapdir="./$chapter"
 
-	if [[ $cwd == "$chapter" ]]; then
-		infile="./$project.c"
-		outfile="./$project"
+	if [[ $workdir == "$chapter" ]]; then
+		chapdir="."
+	fi
+
+	local infile outfile
+
+	if ((10#$chapter < 15)); then
+		infile="$chapdir/$project.c"
+		outfile="$chapdir/$project"
 	else
-		infile="./$chapter/$project.c"
-		outfile="./$chapter/$project"
+		infile="$chapdir/$project/main.c"
+		outfile="$chapdir/$project/main"
 	fi
 
 	# shellcheck disable=SC2064
