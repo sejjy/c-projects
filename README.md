@@ -26,7 +26,7 @@ $ ./project [args...]
 ```
 
 Alternatively, use the [`car`](./car) script to <ins>c</ins>ompile
-<ins>a</ins>nd <ins>r</ins>un single-file projects easily:
+<ins>a</ins>nd <ins>r</ins>un projects easily:
 
 ```bash
 $ ./car chapter project [args...]
