@@ -19,8 +19,8 @@ by K. N. King
 The book recommends using `gcc` with the following options:
 
 ```bash
-gcc -O -Wall -W -pedantic -ansi -std=c99 -o project project.c
-	&& ./project
+gcc -O -Wall -W -pedantic -ansi -std=c99 -o <outfile> <infile> &&
+	<outfile> [args...]
 ```
 
 Makefiles are introduced in Chapter 15. For earlier chapters, use the
