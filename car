@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Compile and run a project
+# Compile and run a single-file project
 #
 # Dependencies:
 #   - gcc

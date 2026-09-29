@@ -18,15 +18,15 @@ by K. N. King
 
 #### Single-file projects
 
-Use `gcc` with the following options:
+Run `gcc` with the following options:
 
 ```bash
 $ gcc -O -Wall -W -pedantic -ansi -std=c99 -o project project.c
 $ ./project [args...]
 ```
 
-Alternatively, use the [`car`](./car) script to <ins>c</ins>ompile
-<ins>a</ins>nd <ins>r</ins>un projects easily:
+Alternatively, run [`./car`](./car) to <ins>c</ins>ompile <ins>a</ins>nd
+<ins>r</ins>un single-file projects easily:
 
 ```bash
 $ ./car chapter project [args...]
@@ -34,7 +34,7 @@ $ ./car chapter project [args...]
 
 #### Multi-file projects
 
-Use `make` inside the project directory:
+Run `make` inside the project directory:
 
 ```bash
 $ make [target]
