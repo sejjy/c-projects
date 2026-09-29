@@ -14,7 +14,7 @@ by K. N. King
 └── ...    # other chapters
 ```
 
-### Build
+### Compile and run
 
 #### Single-file projects
 
