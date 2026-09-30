@@ -9,42 +9,45 @@
 # Date:   September 08, 2026
 
 fatal() {
-	local script=${0##*/}
-
-	echo "$script: $*" >&2
+	echo "${0##*/}: $*" >&2
 	exit 1
 }
 
+valid() {
+	[[ $1 -ge $2 && $1 -le $3 ]]
+}
+
 main() {
-	if (($# < 2)); then
+	if [[ $# -lt 2 ]]; then
 		fatal "<chapter> <project> [args...]"
 	fi
 
-	local chapter=$((10#$1))
-	local project=$((10#$2))
+	local chapter=$1
+	local project=$2
 	local args=("${@:3}")
 
-	if ((chapter < 2 || chapter > 27)); then
+	if ! valid "$chapter" 2 27; then
 		fatal "chapter must be 2 to 27"
 	fi
 
-	if ((project < 1 || project > 19)); then
+	if ! valid "$project" 1 19; then
 		fatal "project must be 1 to 19"
 	fi
 
 	printf -v chapter "%02d" "$chapter"
 	printf -v project "%02d" "$project"
 
-	local workdir=${PWD##*/}
-	local chapdir="./$chapter"
+	local chapdir
 
-	if [[ $workdir == "$chapter" ]]; then
-		chapdir="."
+	if valid "${PWD##*/}" 2 27; then
+		chapdir="../$chapter"
+	else
+		chapdir="./$chapter"
 	fi
 
 	local infile outfile
 
-	if ((10#$chapter < 15)); then
+	if [[ $chapter -lt 15 ]]; then
 		infile="$chapdir/$project.c"
 		outfile="$chapdir/$project"
 	else
