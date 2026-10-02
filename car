@@ -45,15 +45,12 @@ main() {
 		chapdir="./$chapter"
 	fi
 
-	local infile outfile
-
-	if [[ $chapter -lt 15 ]]; then
-		infile="$chapdir/$project.c"
-		outfile="$chapdir/$project"
-	else
-		infile="$chapdir/$project/main.c"
-		outfile="$chapdir/$project/main"
+	if [[ $chapter -ge 15 ]]; then
+		chapdir+="/$project"
 	fi
+
+	local infile="$chapdir/$project.c"
+	local outfile="$chapdir/$project"
 
 	# shellcheck disable=SC2064
 	trap "rm -f $outfile" EXIT
