@@ -160,9 +160,8 @@ void print(void)
 {
 	int i;
 
-	printf("Part Number   Part Name                  "
-	       "Quantity on Hand\n");
+	printf("Part Number   Part Name                   Quantity on Hand\n");
 	for (i = 0; i < num_parts; i++)
-		printf("%7d       %-25s%11d\n", inventory[i].number,
-		       inventory[i].name, inventory[i].on_hand);
+		printf("%11d   %-25s   %16d\n",
+				inventory[i].number, inventory[i].name, inventory[i].on_hand);
 }

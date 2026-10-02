@@ -112,8 +112,8 @@ void insert(void)
 /**********************************************************
  * search: Prompts the user to enter a part number, then  *
  *         looks up the part in the database. If the part *
- *         exists, prints the name and quantity on hand;  *
- *         if not, prints an error message.               *
+ *         exists, prints the name, price, and quantity   *
+ *         on hand; if not, prints an error message.      *
  **********************************************************/
 void search(void)
 {
@@ -153,10 +153,11 @@ void update(void)
 }
 
 /**********************************************************
- * change: Prompts the user to enter a part number.       *
- *         Prints an error message if the part doesn't    *
- *         exist; otherwise, prompts the user to enter    *
- *         change in price and updates the database.      *
+ * change_price: Prompts the user to enter a part number. *
+ *               Prints an error message if the part      *
+ *               doesn't exist; otherwise, prompts the    *
+ *               user to enter change in price and        *
+ *               updates the database.                    *
  **********************************************************/
 void change_price(void)
 {
@@ -175,7 +176,7 @@ void change_price(void)
 
 /**********************************************************
  * print: Prints a listing of all parts in the database,  *
- *        showing the part number, part name, and         *
+ *        showing the part number, part name, price, and  *
  *        quantity on hand. Parts are printed in the      *
  *        order in which they were entered into the       *
  *        database.                                       *
@@ -184,9 +185,10 @@ void print(void)
 {
 	int i;
 
-	printf("%-11s   %-20s   %7s   %16s\n", "Part Number", "Part Name", "Price",
-			"Quantity on Hand");
+	printf("Part Number   Part Name                   Price        "
+	       "Quantity on Hand\n");
 	for (i = 0; i < num_parts; i++)
-		printf("%-11d   %-20s   %7.2f   %16d\n", inventory[i].number,
-				inventory[i].name, inventory[i]. price, inventory[i].on_hand);
+		printf("%11d   %-25s   %10.2f   %16d\n",
+				inventory[i].number, inventory[i].name, inventory[i].price,
+				inventory[i].on_hand);
 }
